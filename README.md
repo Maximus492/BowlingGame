@@ -1,4 +1,4 @@
-# BowlingGame
+
 # third step - add counting the spares
 #
 # note - from now on array will be called list
@@ -22,3 +22,5 @@
 #
 #
 # realised the pins have to count in doubles as well
+
+
