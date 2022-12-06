@@ -1,49 +1,24 @@
 # BowlingGame
-# mk 2 of second step
-# Previously code was just reading pins.  Now code is added to read strikes.
-#       def testJustPins(self): test adjusted to account for strike counting
-#       def testForStrikesAtLastOfArray(self):  test created to check for out of index error when testing for strikes
-#       
-# it is counting the strikes 
-# however if the last or second to last value in the array is 10 it produces a out of index error,
+# mk 3 of second step
 #
-# because in the code below the rollIndex+1 and rollIndex+2 is out of index on the array it is checking.
-#     def strikeScore(self,rollIndex):            
-#        return  10+ self.rolls[rollIndex+1]+ self.rolls[rollIndex+2]
+# note - from now on array will be called list
 #
+# To stop the roll out of index problem, after the rolls list is created with 
+# scores, when the     def score(self): method is called up the code adds
+#           self.rolls.append(0) 
+#           self.rolls.append(0)
 #
-# changed     if self.isStrike(rollIndex):
-#                   result += self.strikeScore(rollIndex,upperLimitOfArray)
-#                   rollIndex +=1
+# These 2 lines create in essence a buffer.  
 #
-#
-# changed     def StrikeScore(self,rollIndex,upperLimitOfArray):
-#                   almostupperLimitOfArray =  upperLimitOfArray - 1
-#                   if rollIndex == upperLimitOfArray:
-#                       return 10
-#                   elif rollIndex == almostupperLimitOfArray:
-#                       return  10+ self.rolls[rollIndex+1]
-#                   else:    
-#                       return  10+ self.rolls[rollIndex+1]+ self.rolls[rollIndex+2]
-#
-#   The code above makes sure it does not get an out of index error.  
-#   However it is very complex so I might try and think of another way to remove the error.
-#
-# def testForStrikesAtLastOfArray(self):  test created to check for out of index error when testing for strikes
-# this test case is just to test if it is reading counting and scoring the frames correctly
-# the assert line would have to be different on the finished code.
-#
-# 
-# on unittest it passed the test code I created - 
-# 
-#    def testJustPins(self): 
-#    def testForStrikesAtLastOfArray(self): 
+# For example if the self.rolls list is [1,3,10,10] the above code adds two zero's 
+# making the list [1,3,10,10,0,0].  Now when the rollIndex gets to index position   
+# 2 to read, reads the value 10 and then tries to read the next postion
+# [rollIndex# +1] there is now something to read and doesn't throw a out of index 
+# error.  Then on [rollIndex +2] there is also something to read.  Because the 
+# value is 0 nothing is added.  
+# after the scoring is concluded the buffer is removed by the lines
+#           self.rolls.pop()
+#           self.rolls.pop()
 #
 #
-#   Also I noticed that I think this test needs adjsutment
-#
-#            def testGutterGame(self):
-#                   for i in range(0, 20):              # one in twenty simultates the 20 rolls
-#                   self.game.rolls(0)  
-#                        assert self.game.score()==0         # this test needs adjustment in what the score should be,   I think.
 #

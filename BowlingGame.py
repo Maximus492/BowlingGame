@@ -11,35 +11,32 @@ class BowlingGame:
     def score(self):
         result = 0
         rollIndex=0
+        self.rolls.append(0)
+        self.rolls.append(0)  # this line and the line above creates a buffer in the rolls list so it does not create a out of index problem.     
         lengthOfRolls = len(self.rolls)
         upperLimitOfArray = lengthOfRolls - 1
         while rollIndex <= upperLimitOfArray:
-            # for strikes below
             if self.isStrike(rollIndex):
-                result += self.strikeScore(rollIndex,upperLimitOfArray)
+                result += self.strikeScore(rollIndex)
                 print("result" +str(result))
                 rollIndex +=1
-            # for counting pins below - similar to previous branch but put into else:
             else: 
                 result += self.frameScore(rollIndex)
                 rollIndex +=1
+        self.rolls.pop()
+        self.rolls.pop() # this line and the line above removes the buffer 
         return result
     
     def isStrike(self, rollIndex):
         return self.rolls[rollIndex] == 10
-    def isSpare(self, rollIndex):               # not used
+
+    def isSpare(self, rollIndex):               # not used yet
         return self.rolls[rollIndex]+ self.rolls[rollIndex+1]==10
 
-    def strikeScore(self,rollIndex,upperLimitOfArray):          # this code is to make sure that it does not go out of index error
-        almostupperLimitOfArray =  upperLimitOfArray - 1
-        if rollIndex == upperLimitOfArray:
-            return 10
-        elif rollIndex == almostupperLimitOfArray:
-            return  10+ self.rolls[rollIndex+1]
-        else:    
-            return  10+ self.rolls[rollIndex+1]+ self.rolls[rollIndex+2]
+    def strikeScore(self,rollIndex):          
+        return  10+ self.rolls[rollIndex+1]+ self.rolls[rollIndex+2]
 
-    def spareScore(self,rollIndex):             # not used
+    def spareScore(self,rollIndex):             # not used yet
         return  10+ self.rolls[rollIndex+2]
 
     def frameScore(self, rollIndex):            
@@ -68,7 +65,7 @@ def BowlStrike():
     game.roll(10)                  # 30
 
     game.roll(10)                  # 60
-    '''  
+
     game.roll(5)                   # 75
   
     game.roll(4)                   # 83
@@ -78,7 +75,13 @@ def BowlStrike():
     game.roll(1)                   # 87
 
     game.roll(5)                   # 92
-    '''   
+
+    game.roll(10)                   # 
+
+    game.roll(10)                   # 
+
+    game.roll(10)                 
+    '''     '''    
     print(game.rolls)
     results = game.score()
     print(results)
