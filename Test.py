@@ -16,24 +16,25 @@ class TestBowlingGame(unittest.TestCase):
     def testGutterGame(self):
         for i in range(0, 20):              # one in twenty simultates the 20 rolls
             self.game.rolls(0)  
-        assert self.game.score()==0
+        assert self.game.score()==0         # this test needs adjstment
     def testAllOnes(self):
         self.rollMany(1, 20)
         assert self.game.score()==20
     def testJustPins(self):                 #  this test has been adjusted to account for strikes
-        self.game.roll(10)                  # 30
-        self.game.roll(10)                  # 25
-        self.game.roll(10)                  # 19
-        self.game.roll(5)                   # 74 + 5
-        self.game.roll(4)                   # 79
-        self.game.roll(3)                   # 82
-        self.game.roll(1)                   # 83
-        self.game.roll(5)                   # 88
-        assert self.game.score()==88
+        self.game.roll(10)         
+        self.game.roll(10)      
+        self.game.roll(10)             
+        self.game.roll(5)            
+        self.game.roll(4) 
+        self.game.roll(3)                  
+        self.game.roll(1)                  
+        self.game.roll(5)                  
+        assert self.game.score()==92
     def testForStrikesAtLastOfArray(self):  # this test to test for out of index errors when counting strikes
         self.game.roll(10)                 
         self.game.roll(10)                  
         self.game.roll(10)
+        assert self.game.score()==60
     def testOneSpare(self):
         self.game.rolls(5)
         self.game.rolls(5)

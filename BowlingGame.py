@@ -16,7 +16,8 @@ class BowlingGame:
         while rollIndex <= upperLimitOfArray:
             # for strikes below
             if self.isStrike(rollIndex):
-                result += self.strikeScore(rollIndex)
+                result += self.strikeScore(rollIndex,upperLimitOfArray)
+                print("result" +str(result))
                 rollIndex +=1
             # for counting pins below - similar to previous branch but put into else:
             else: 
@@ -28,8 +29,15 @@ class BowlingGame:
         return self.rolls[rollIndex] == 10
     def isSpare(self, rollIndex):               # not used
         return self.rolls[rollIndex]+ self.rolls[rollIndex+1]==10
-    def strikeScore(self,rollIndex):            # changed stickeScore to strikeScore
-        return  10+ self.rolls[rollIndex+1]+ self.rolls[rollIndex+2]
+
+    def strikeScore(self,rollIndex,upperLimitOfArray):          # this code is to make sure that it does not go out of index error
+        almostupperLimitOfArray =  upperLimitOfArray - 1
+        if rollIndex == upperLimitOfArray:
+            return 10
+        elif rollIndex == almostupperLimitOfArray:
+            return  10+ self.rolls[rollIndex+1]
+        else:    
+            return  10+ self.rolls[rollIndex+1]+ self.rolls[rollIndex+2]
 
     def spareScore(self,rollIndex):             # not used
         return  10+ self.rolls[rollIndex+2]
@@ -49,21 +57,30 @@ class BowlingGame:
 
 
 # Below is homemade test code - doesn't count strikes or spares
+
 def BowlStrike():
     print("**************************************")
     print("")
     game = BowlingGame()
     print("working so far")
-    game.roll(10)
-    game.roll(10) 
-    game.roll(10)
-    game.roll(5)   
-    game.roll(4)
-    game.roll(3)   
-    game.roll(10)
-    game.roll(10)   
+    game.roll(10)                  # 10
+
+    game.roll(10)                  # 30
+
+    game.roll(10)                  # 60
+    '''  
+    game.roll(5)                   # 75
+  
+    game.roll(4)                   # 83
+    
+    game.roll(3)                   # 86
+
+    game.roll(1)                   # 87
+
+    game.roll(5)                   # 92
+    '''   
     print(game.rolls)
     results = game.score()
     print(results)
 
-BowlStrike()            # this works 
+BowlStrike()
