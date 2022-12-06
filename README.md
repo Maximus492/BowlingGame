@@ -21,4 +21,6 @@
 # this time (instead of 1 with the other methods) because those two values have been counted. 
 #
 #
-# realised the pins have to count in doubles as well
+# Just realised the pins have to count in doubles as well
+#
+# The next plan will be fourth, trying to get everything going right

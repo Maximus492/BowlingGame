@@ -34,6 +34,7 @@ class BowlingGame:
                 print("pin RollIndex" +str(rollIndex))
         self.rolls.pop()
         self.rolls.pop() # this line and the line above removes the buffer 
+        print(self.rolls)
         return result
     
     def isStrike(self, rollIndex):
@@ -88,15 +89,15 @@ def BowlStrike():
     game.roll(1)                   # 87
 
     game.roll(5)                   # 92
-    '''  
+    
     game.roll(5)                   # 
 
-    game.roll(10)                   # 
+    game.roll(10)                  # 
 
     game.roll(5)    
 
     game.roll(5)              
-    '''       
+    '''  '''       
     print(game.rolls)
     results = game.score()
     print(results)
