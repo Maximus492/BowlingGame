@@ -1,24 +1,24 @@
 # BowlingGame
-# mk 3 of second step
+# third step - add counting the spares
 #
 # note - from now on array will be called list
 #
-# To stop the roll out of index problem, after the rolls list is created with 
-# scores, when the     def score(self): method is called up the code adds
-#           self.rolls.append(0) 
-#           self.rolls.append(0)
-#
-# These 2 lines create in essence a buffer.  
-#
-# For example if the self.rolls list is [1,3,10,10] the above code adds two zero's 
-# making the list [1,3,10,10,0,0].  Now when the rollIndex gets to index position   
-# 2 to read, reads the value 10 and then tries to read the next postion
-# [rollIndex# +1] there is now something to read and doesn't throw a out of index 
-# error.  Then on [rollIndex +2] there is also something to read.  Because the 
-# value is 0 nothing is added.  
-# after the scoring is concluded the buffer is removed by the lines
-#           self.rolls.pop()
-#           self.rolls.pop()
+# added the 
+#               if self.isSpare(rollIndex):
+#                   result += self.spareScore(rollIndex,upperLimitOfArray)
+#                   rollIndex +=2 # the rollIndex jumps 2 this time because we have already counted the two in the order in the list together because they are a spare.
 #
 #
+# added the 
+#               def isSpare(self, rollIndex):
+#                   if rollIndex == upperLimitOfArray:     # this code is to stop going out of index error     
+#                       return 0               
+#                   else:  
+#                       return self.rolls[rollIndex]+ self.rolls[rollIndex+1]==10  # this line counts the 2 pins together to determine if its a spare
 #
+#
+# These two methods determine if the next two values in the list add up to 10 then it counts those two values and advances the rollIndex 2 this 
+# this time (instead of 1 with the other methods) because those two values have been counted. 
+#
+#
+# realised the pins have to count in doubles as well
