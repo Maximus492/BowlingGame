@@ -10,5 +10,7 @@
 #     def strikeScore(self,rollIndex):            
 #        return  10+ self.rolls[rollIndex+1]+ self.rolls[rollIndex+2]
 #
+
+# def testForStrikesAtLastOfArray(self):  test created to check for out of index error when testing for strikes
 # this test case is just to test if it is reading counting and scoring the frames correctly
 # the assert line would have to be different on the finished code.
