@@ -1,8 +1,22 @@
-# BowlingGame
-# This is the starting code, essentially the code that has been given at the start
-# I have run the utitest module, got 5 errors
-# After examination of the code I have come up with a plan
-# The plan is to break it down into sections
-# first - get the program to read and add up just pins code
-# second - get the program to read and add up strikes code
-# third - get the program to read and add up spares code
+
+# Fourth step - get everything together and fix counting frames
+#
+# note - from now on array will be called list
+#
+# I realiased that when counting frames it needs to count in 2 increments.
+# for example -
+# 
+# self.rolls[10,1,5,5,1]
+#
+# the way I had the counting was that it would count 10 as a strike, then count the 
+# 1, then it would count the 5 and 5 together.  Unforunately in reality the 5 and 5 
+# score are not in the same frame.  Therefore I need to count the 1 and 5 together, 
+# and count the 5 and 1 together.  Having the buffer appending into the self.rolls 
+# list will hopefully make the code I am thinking work.
+#
+# Also need to test the counting spare code.  Needd to check that the 
+# upperlimtiarray works.
+
+
+
+
