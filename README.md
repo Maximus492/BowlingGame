@@ -1,32 +1,22 @@
 
-# third step - add counting the spares
+# Fourth step - get everything together and fix counting frames
 #
 # note - from now on array will be called list
 #
-# added the 
-#               if self.isSpare(rollIndex):
-#                   result += self.spareScore(rollIndex,upperLimitOfArray)
-#                   rollIndex +=2 # the rollIndex jumps 2 this time because we have already counted the two in the order in the list together because they are a spare.
+# I realiased that when counting frames it needs to count in 2 increments.
+# for example -
+# 
+# self.rolls[10,1,5,5,1]
 #
+# the way I had the counting was that it would count 10 as a strike, then count the 
+# 1, then it would count the 5 and 5 together.  Unforunately in reality the 5 and 5 
+# score are not in the same frame.  Therefore I need to count the 1 and 5 together, 
+# and count the 5 and 1 together.  Having the buffer appending into the self.rolls 
+# list will hopefully make the code I am thinking work.
 #
-# added the 
-#               def isSpare(self, rollIndex):
-#                   if rollIndex == upperLimitOfArray:     # this code is to stop going out of index error     
-#                       return 0               
-#                   else:  
-#                       return self.rolls[rollIndex]+ self.rolls[rollIndex+1]==10  # this line counts the 2 pins together to determine if its a spare
-#
-#
-# These two methods determine if the next two values in the list add up to 10 then it counts those two values and advances the rollIndex 2 this 
-# this time (instead of 1 with the other methods) because those two values have been counted. 
-#
-#
+# Also need to test the counting spare code.  Needd to check that the 
+# upperlimtiarray works.
 
-# Just realised the pins have to count in doubles as well
-#
-# The next plan will be fourth, trying to get everything going right
-
-# realised the pins have to count in doubles as well
 
 
 
