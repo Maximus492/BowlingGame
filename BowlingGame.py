@@ -15,7 +15,12 @@ class BowlingGame:
         lengthOfRolls = len(self.rolls)         # get length of self.rolls.list
         upperLimitOfList = lengthOfRolls - 1    # create the limit of the 'while' loop
         self.rolls.append(0)                    # IMPORTANT - THIS LINE AND THE LINE BELOW NEEDS TO BE PLACED AFTER THE ABOVE TWO LINES
-        self.rolls.append(0)                    # this line and the line above creates a buffer in the rolls list so it does not create a out of index problem.  
+        self.rolls.append(0)                    # this line and the line above creates a buffer in the rolls list so it does not create a out of index problem. 
+
+        # NEW CODE
+        self.rolls.append(0) 
+        # NEW CODE 
+         
         while rollIndex <= upperLimitOfList:
             if frameCount < 10:                                         # score under 9 frames
                 if self.isStrike(rollIndex):                            # checks to see if strike
@@ -26,10 +31,21 @@ class BowlingGame:
                     result += self.spareScore(rollIndex)                # scores the spare
                     rollIndex +=2                                       # the rollIndex jumps 2 because spare takes 2 index position
                     frameCount +=1                                      # one frame accomplished
+
+                # NEW CODE
+                else:
+                    result += self.rolls[rollIndex] + self.rolls[rollIndex+1]
+                    rollIndex +=2 
+                    frameCount +=1 
+                # NEW CODE    
+
+                '''
                 else: 
                     result += self.frameScore(rollIndex)                # scores the pins, 2 index positions
                     rollIndex +=1                                       # changed 1 to 2 because it needs to count 2 because there are two pins to a frame
                     frameCount +=0.5                                    # half a frame accomlished
+                '''
+                    
             elif frameCount >= 10:                                      # score over 9 frames.  On the ten frame the Scoring rules change
                 result += self.rolls[rollIndex]
                 rollIndex +=1 
