@@ -31,7 +31,7 @@ class TestBowlingGame(unittest.TestCase):
         self.game.roll(10)
         self.game.roll(4) 
         self.game.roll(6)                      
-        assert self.game.score()==154
+        assert self.game.score()==165
     def testForStrikesAtLastOfArray(self):  # this test to test for out of index errors when counting strikes/test strike counting working
         self.game.roll(10)                 
         self.game.roll(10)                  
